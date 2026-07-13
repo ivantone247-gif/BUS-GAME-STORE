@@ -1,1 +1,293 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUS GAME STORE - BUSSID & ETS2 Mods Tanzania</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+        }
+
+        /* Header Style */
+        header {
+            background: linear-gradient(135deg, #111827, #1f2937);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid #10b981;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #9ca3af;
+            font-size: 1.1rem;
+        }
+
+        /* Banner ya App */
+        .app-banner {
+            background: linear-gradient(90deg, #f59e0b, #ec4899);
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* Container & Navigation */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: #1f2937;
+            color: white;
+            border: 2px solid #374151;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #10b981;
+            border-color: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Products Grid */
+        .mods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .mod-card {
+            background-color: #111827;
+            border: 1px solid #1f2937; 
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mod-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border-color: #10b981;
+        }
+
+        .mod-image {
+            width: 100%;
+            height: 200px;
+            background-color: #374151;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-weight: bold;
+            background-size: cover;
+            background-position: center;
+        }
+
+        #img-bus1 { background-image: url('https://placehold.co/600x400/1f2937/10b981?text=Marcopolo+G8'); }
+        #img-bus2 { background-image: url('https://placehold.co/600x400/1f2937/10b981?text=Zhongtong+Elegant'); }
+        #img-map1 { background-image: url('https://placehold.co/600x400/1f2937/10b981?text=Kiteto+Forest+Roads'); }
+
+        .mod-info {
+            padding: 20px;
+        }
+
+        .mod-tag {
+            background-color: #065f46;
+            color: #34d399;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .mod-title {
+            font-size: 1.3rem;
+            margin: 10px 0;
+            color: #f3f4f6;
+        }
+
+        .mod-desc {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .mod-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #10b981;
+        }
+
+        .btn-action {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: opacity 0.2s;
+        }
+
+        .btn-action:hover {
+            opacity: 0.9;
+        }
+
+        .btn-download {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: black;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+            color: #6b7280;
+            border-top: 1px solid #1f2937;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>BUS GAME STORE</h1>
+        <p>Pakua na Nunua Mods Kali za Mabasi na Ramani za Kitanzania</p>
+    </header>
+
+    <div class="app-banner">
+        🔥 PAKUA APP YETU YA BUS GAME STORE 📲
+    </div>
+
+    <div class="container">
+        
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterMods('all')">Zote</button>
+            <button class="filter-btn" onclick="filterMods('bus')">Mabasi</button>
+            <button class="filter-btn" onclick="filterMods('map')">Ramani</button>
+            <button class="filter-btn" onclick="filterMods('livery')">Liveries/Skin</button>
+        </div>
+
+        <!-- Mods Grid -->
+        <div class="mods-grid">
+            
+            <!-- Mod 1 (Ya Kulipia) -->
+            <div class="mod-card item-bus">
+                <div class="mod-image" id="img-bus1"></div>
+                <div class="mod-info">
+                    <span class="mod-tag">Bus Mod</span>
+                    <h3 class="mod-title">Marcopolo G8 - Scania</h3>
+                    <p class="mod-desc">Mod kali sana yenye sauti halisi, taa za LED, abiria ndani, na dashibodi ya kisasa ya Scania ya Kitanzania.</p>
+                    <div class="mod-price-row">
+                        <span class="price">Tsh 2,000</span>
+                        <!-- BADILISHA NAMBA HAPO CHINI WEKA YA KWAKO -->
+                        <a href="https://wa.me/255636759524?text=Habari,%20nahitaji%20Mod%20ya%20Marcopolo%20G8" target="_blank" class="btn-action btn-whatsapp">Nunua WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mod 2 (Ya Bure) -->
+            <div class="mod-card item-livery">
+                <div class="mod-image" id="img-bus2"></div>
+                <div class="mod-info">
+                    <span class="mod-tag">Livery / Skin</span>
+                    <h3 class="mod-title">Zhongtong Elegant - Kilimanjaro Express</h3>
+                    <p class="mod-desc">Skin ya ukweli yenye muonekano safi wa basi la Kilimanjaro Express. Inakaa kwenye basi la Zhongtong.</p>
+                    <div class="mod-price-row">
+                        <span class="price" style="color: #34d399;">BURE</span>
+                        <!-- WEKA LINK YAKO YA MEDIAFIRE AU GOOGLE DRIVE -->
+                        <a href="#" target="_blank" class="btn-action btn-download">Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mod 3 (Ya Kulipia) -->
+            <div class="mod-card item-map">
+                <div class="mod-image" id="img-map1"></div>
+                <div class="mod-info">
+                    <span class="mod-tag">Map Mod</span>
+                    <h3 class="mod-title">Ramani ya Kiteto - Kupitia Msituni</h3>
+                    <p class="mod-desc">Ramani mpya yenye barabara za vumbi, milima mikali, na vituo vya mabasi vya mikoani. Changamoto kibao!</p>
+                    <div class="mod-price-row">
+                        <span class="price">Tsh 3,000</span>
+                        <!-- BADILISHA NAMBA HAPO CHINI WEKA YA KWAKO -->
+                        <a href="https://wa.me/255636759524?text=Habari,%20nahitaji%20Mod%20ya%20Map%20ya%20Kiteto" target="_blank" class="btn-action btn-whatsapp">Nunua WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 BUS GAME STORE. Haki zote zimehifadhiwa.</p>
+    </footer>
+
+    <!-- Script ya Kuchuja Mods -->
+    <script>
+        function filterMods(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.mod-card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    if (card.classList.contains('item-' + category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
